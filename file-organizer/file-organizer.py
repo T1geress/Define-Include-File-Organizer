@@ -50,9 +50,11 @@ for file_ in list_:
 
     #Checks if there is no extension
     #If the extension variable is empty, moves onto the next iteration
-    
+    name, ext = os.path.splitext(file_)
     if ext == '':
         continue
+    print (name)
+    print (ext)
 
     # 2. Loop through DIRECTORIES
 
