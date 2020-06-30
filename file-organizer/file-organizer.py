@@ -55,13 +55,13 @@ for file_ in list_:
         continue
 
     # 2. Loop through DIRECTORIES
-    for key in DIRECTORIES
+    for key in DIRECTORIES:
 
         # 3. If the extension is in one of the lists
         if ext in DIRECTORIES[key]:
 
             # 4. Check if the key is a folder in the current directory already
-            if not os.path.exists(path + DIRECTORIES[key]):
+            if not os.path.exists(DIRECTORIES[key]):
 
                 # 5. If the key is already a folder in the directory,
                 # move the file into that directory using shutil.move
@@ -69,7 +69,8 @@ for file_ in list_:
 
             # 6. If the folder is not in the current directory already,
             # create the folder
-            os.makedirs(path + DIRECTORIES[key])
+            else:
+                os.makedirs(path + DIRECTORIES[key])
 
                 # 7. Move the file into that directory using shutil.move
                 shutil.move((path + ext), path + DIRECTORIES[key])
