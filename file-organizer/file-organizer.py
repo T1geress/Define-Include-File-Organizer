@@ -36,7 +36,7 @@ DIRECTORIES = {
 
 #The path of the directory to be sorted
 #edit this to where you placed your test-file folder
-path = 'C:\\Users\\Dynamite\\github\\Define-Include-File-Organizer\\file-organizer\\test-file\\'
+path = 'C:\\Users\\Dynamite\\github\\Define-Include-File-Organizer\\file-organizer\\test-file'
 #Creates a list with the filenames in the directory
 list_ = os.listdir(path)
 
@@ -55,25 +55,26 @@ for file_ in list_:
         continue
 
     # 2. Loop through DIRECTORIES
-    for key in DIRECTORIES:
+    for key, value in DIRECTORIES.items():
 
         # 3. If the extension is in one of the lists
-        if ext in DIRECTORIES[key]:
+        if ext in value:
 
             # 4. Check if the key is a folder in the current directory already
-            if not os.path.exists(DIRECTORIES[key]):
+            if os.path.exists(path + '/' + key):
 
                 # 5. If the key is already a folder in the directory,
                 # move the file into that directory using shutil.move
-                shutil.move((path + ext), path + DIRECTORIES[key])
+                shutil.move((path + '/' + file_), path + '/' + key + '/' + file_)
 
             # 6. If the folder is not in the current directory already,
             # create the folder
             else:
-                os.makedirs(path + DIRECTORIES[key])
+                os.makedirs(path + '/' + key)
 
                 # 7. Move the file into that directory using shutil.move
-                shutil.move((path + ext), path + DIRECTORIES[key])
+                shutil.move((path + '/' + file_), path + '/' + key + '/' + file_)
 
         # 8. Else, continue to the next iteration
-        else: continue
+        else:
+            continue
